@@ -11,8 +11,6 @@
 #include "inc/hw_memmap.h"
 #include "driverlib/sysctl.h"
 #include "driverlib/gpio.h"
-#include "common.h"
-#include "init.h"
 
 //''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
 //Constants (Local and Global)
