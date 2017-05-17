@@ -89,11 +89,13 @@ now brief description of the functions used in lcd library-
 and also some commands are being sent to LCD like 0x03 for 4 pin initialization,etc.
 
 2.void Lcd_595_Cmd(unsigned char c)-this function is used to send command to LCD .In this we are sending 8 bit data to
- 4 data pins of LCD by diving the 8 bit data in 2 parts and assigning them to upper nibble and lower nibble.
+ 4 data pins of LCD by diving the 8 bit data in 2 parts and assigning them to upper nibble and lower nibble and then sends 
+the data bitwise using shiftOut function. 
 
-3.void Lcd_595_send_character(unsigned char c)-this function is used to send character to the LCD
+3.void Lcd_595_send_character(unsigned char c)-this function is used to send character to the LCD using shift operator.
 
-4.void PulseEnable ()-to enable the LCD
+4.void PulseEnable ()-First make enable pin high and then after some delay ,make enable pin low.This is done so that the 
+LCD can get enough time to gather the information(or for processing).
 
 5.void shiftOut(unsigned char c)-sending data bit wise.
 
@@ -112,3 +114,4 @@ and also some commands are being sent to LCD like 0x03 for 4 pin initialization,
 12.void start_from_beginning()-if data overflows then use this function
 
 13.void Position_Lcd(unsigned char x, unsigned char y)-set the desired position in LCD
+
