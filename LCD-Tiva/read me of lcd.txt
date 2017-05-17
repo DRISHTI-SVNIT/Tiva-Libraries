@@ -86,20 +86,32 @@ delay(10);
 ========================================================================================================
 now brief description of the functions used in lcd library-
 1.void LCD_16x2_595_init()-this function set 3 pins-enable,clock and data as output pins and initially their value is zero
+and also some commands are being sent to LCD like 0x03 for 4 pin initialization,etc.
 
-2.void LCD_595_Init()-in this function,some commands are being sent to LCD like 0x03 for 4 pin initialization,etc
+2.void Lcd_595_Cmd(unsigned char c)-this function is used to send command to LCD .In this we are sending 8 bit data to
+ 4 data pins of LCD by diving the 8 bit data in 2 parts and assigning them to upper nibble and lower nibble and then sends 
+the data bitwise using shiftOut function. 
 
-3.void Lcd_595_Cmd(unsigned char c)-this function is used to send command to LCD .In this we are sending 8 bit data to
- 4 data pins of LCD by diving the 8 bit data in 2 parts and assigning them to upper nibble and lower nibble.
+3.void Lcd_595_send_character(unsigned char c)-this function is used to send character to the LCD using shift operator.
 
-4.void Lcd_595_Chr_Cp(unsigned char c)-this function is used to send character to the LCD.
+4.void PulseEnable ()-First make enable pin high and then after some delay ,make enable pin low.This is done so that the 
+LCD can get enough time to gather the information(or for processing).
 
-5.void sendAstring(char *string_of_character)-this function is used to send string to LCD
+5.void shiftOut(unsigned char c)-sending data bit wise.
 
-6.void PulseEnable ()-to enable the LCD
+6.void send_number(unsigned long n)-used to print number on LCD
 
-7.void shiftOut(unsigned char c)-sending data bit wise.
+7.void sendAstring(char *ch)-used to print string on LCD in both lines
 
-8.void sendAnumber(unsigned long n)-used to print number on LCD
+8.void sendF_number(double n)-used to print decimal number
 
-9.void send_to_next_line(char *ch)-used to print string on LCD in both lines
+9.void LCD_Print( char* format,...)-through this printf function , u can print integer,float,string and character
+
+10.void Lcd_595_Chr(char row, char column, char out_char)-set position which is being sent to function and print character
+
+11.void Lcd_595_text(char row, char column, char *text)-set position which is being sent to function and print string
+
+12.void start_from_beginning()-if data overflows then use this function
+
+13.void Position_Lcd(unsigned char x, unsigned char y)-set the desired position in LCD
+

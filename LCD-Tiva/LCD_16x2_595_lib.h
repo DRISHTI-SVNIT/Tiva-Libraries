@@ -11,8 +11,6 @@
 #include "inc/hw_memmap.h"
 #include "driverlib/sysctl.h"
 #include "driverlib/gpio.h"
-#include "common.h"
-#include "init.h"
 
 //''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
 //Constants (Local and Global)
@@ -69,18 +67,17 @@
 //''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
 //declaration global functions
 //''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
-extern void LCD_16x2_595_init();
-extern void LCD_595_Init();
+extern void Lcd_16x2_595_init();
 extern void Lcd_595_Cmd(unsigned char c);
-extern void Lcd_595_Chr_Cp(unsigned char c);
-void sendAstring(char *string_of_character);
+extern void Lcd_595_send_character(unsigned char c);
 extern void Lcd_595_Chr(char row, char column, char out_char);
 extern void Lcd_595_text(char row, char column, char *text);
 void send_number(unsigned long n);
-void send_to_next_line(char *ch);
+void sendAstring(char *ch);
 void sendFloat_number( double n);
-void Position_LCD(unsigned char x, unsigned char y);
-void LCD_Print( char* format,...);
+void Position_Lcd(unsigned char x, unsigned char y);
+void Lcd_Print( char* format,...);
+void start_from_beginning();
 //''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
 //Section of the macros
 //''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
